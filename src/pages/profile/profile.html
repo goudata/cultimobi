@@ -17,7 +17,7 @@
     </ion-item> -->
 
     <button ion-button (click)="takePhoto()">Take Photo</button>
-
+    <ion-img width="80" height="80" src="{{image}}"></ion-img>
     <ion-item>
       <ion-label floating>Username</ion-label>
       <ion-input [(ngModel)]="profile.username"></ion-input>

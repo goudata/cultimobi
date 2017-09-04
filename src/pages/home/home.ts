@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController, ToastController } from 'ionic-angular';
-import { LoginPage } from '../../pages/login/login';
 
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
 import { Profile } from "../../models/profile";
+import { LoginPage } from "../login/login";
 
 @Component({
   selector: 'page-home',
@@ -25,6 +25,11 @@ export class HomePage {
     //   this.data = JSON.parse(localStorage.getItem('currentUser'));
     //   return true;
     // }
+  }
+
+  signOut() {
+    this.afAuth.auth.signOut();
+    this.navCtrl.setRoot(LoginPage)
   }
 
   ionViewWillLoad() {

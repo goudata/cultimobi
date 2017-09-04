@@ -23,6 +23,7 @@ export class ProfilePage {
 
   profile = {} as Profile;
   user: any;
+  image: any;
 
   constructor(private afAuth: AngularFireAuth,
     private afDatabase: AngularFireDatabase,
@@ -54,6 +55,10 @@ export class ProfilePage {
 
       const pictures = storage().ref('pictures');
       pictures.putString(image, 'data_url');
+
+      this.profile.photoURL = image;
+      this.image = image;
+      
 
     } catch (error) {
 
