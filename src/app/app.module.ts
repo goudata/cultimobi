@@ -17,6 +17,7 @@ import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { AngularFireModule } from 'angularfire2'
 import { AngularFireAuthModule } from 'angularfire2/auth'
 import { AngularFireDatabaseModule } from "angularfire2/database";
+import { Camera } from "@ionic-native/camera";
 
 
 // Initialize Firebase
@@ -58,6 +59,7 @@ const config = {
   providers: [
     StatusBar,
     SplashScreen,
+    Camera,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     AuthServiceProvider
   ]
