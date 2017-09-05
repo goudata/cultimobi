@@ -17,12 +17,12 @@
   <h2>Please, Register</h2>
   <form (submit)="register(user)">
     <ion-item>
-      <ion-label stacked>Email</ion-label>
-      <ion-input [(ngModel)]="user.email" name="email" type="text" placeholder="Email" ></ion-input>
+      <ion-label floating>Email</ion-label>
+      <ion-input [(ngModel)]="user.email" name="email" type="text" ></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label stacked>Password</ion-label>
-      <ion-input [(ngModel)]="user.password" name="password" type="password" placeholder="Password"></ion-input>
+      <ion-label floating>Password</ion-label>
+      <ion-input [(ngModel)]="user.password" name="password" type="password"></ion-input>
     </ion-item>
     <button ion-button block type="submit">
       Register

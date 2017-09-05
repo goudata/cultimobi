@@ -26,6 +26,7 @@ export class RegisterPage {
     
     try {
       const result = this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password);
+      this.navCtrl.pop();
       console.log(result);
 
     } catch (e) {

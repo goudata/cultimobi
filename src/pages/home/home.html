@@ -9,11 +9,22 @@
 
 <ion-content padding>
   <!-- <h3>Welcome {{data.user.firstname}} {{data.user.lastname}}</h3> -->
-  <ion-img width="200" height="200" src="{{(profileData | async)?.photoURL}}"></ion-img>
-  <p>Username: {{(profileData | async)?.username}}</p>
-  <p>First Name: {{(profileData | async)?.firstName}}</p>
-  <p>Last Name: {{(profileData | async)?.lastName}}</p>
+  <!-- <ion-img class="full-image" src="{{(profileData | async)?.photoURL}}"></ion-img>
   
+  
+   -->
+
+  <ion-card>
+    <img class="full-image" src="{{(profileImage | async)}}" />
+    <ion-card-content>
+      <ion-card-title>
+        Email: {{(profileData | async)?.email}}
+        </ion-card-title>
+        <p>Username: {{(profileData | async)?.username}}</p>
+        <p>First Name: {{(profileData | async)?.firstName}}</p>
+        <p>Last Name: {{(profileData | async)?.lastName}}</p>
+    </ion-card-content>
+  </ion-card>
   <button ion-button secondary menuToggle>Toggle Menu</button>
   <button ion-button (click)="signOut()">Sign Out</button>
 </ion-content>

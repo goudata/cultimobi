@@ -5,6 +5,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
 import { Profile } from "../../models/profile";
 import { LoginPage } from "../login/login";
+import { storage } from "firebase";
 
 @Component({
   selector: 'page-home',
@@ -13,6 +14,8 @@ import { LoginPage } from "../login/login";
 export class HomePage {
 
   profileData: FirebaseObjectObservable<Profile>
+
+  profileImage: any;
 
   constructor(private afAuth: AngularFireAuth, private afDatabase: AngularFireDatabase, public navCtrl: NavController, private toast: ToastController) {
     // if(!this.isLoggedIn()){
@@ -32,8 +35,11 @@ export class HomePage {
     this.navCtrl.setRoot(LoginPage)
   }
 
-  ionViewWillLoad() {
-    this.afAuth.authState.take(1).subscribe(data => {
+  async ionViewWillEnter() {
+
+    
+    
+    await this.afAuth.authState.take(1).subscribe(data => {
       if(data.email){
         this.toast.create({
           message: `Welcome back,` + data.email,
@@ -41,6 +47,12 @@ export class HomePage {
         })
 
         this.profileData = this.afDatabase.object(`profile/${data.uid}`);
+
+        const pictures = storage().ref('pictures');
+        pictures.getDownloadURL().then(function(url){
+          this.profileImage = url;
+        })
+
       } else {
         this.toast.create({
           message: `User not found`,
